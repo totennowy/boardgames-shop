@@ -1,10 +1,42 @@
-# Backend dependencies
-/backend/node_modules
-/backend/.env
+# Node.js
+node_modules/
 
-# Frontend dependencies
-/frontend/node_modules
-/frontend/.env
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# System files
+# Debug
 .DS_Store
+.vscode/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Build directories
+dist/
+build/
+public/
+
+# Config files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE specific files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
