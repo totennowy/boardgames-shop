@@ -1,0 +1,8 @@
+node_modules
+build
+dist
+public
+*.svg
+*.png
+*.jpg
+*.jpeg
