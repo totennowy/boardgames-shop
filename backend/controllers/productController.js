@@ -1,28 +1,88 @@
-const Product = require('../models/Product');
+const Product = require('../models/productModel');
 
-const getProducts = async (req, res) => {
-    try {
-        const products = await Product.find({});
-        res.json(products);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
+exports.getAllProducts = async (req, res) => {
+  try {
+    const { limit = 10, offset = 0 } = req.query;
+    const products = await Product.find({})
+      .skip(Number(offset))
+      .limit(Number(limit));
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
-const getProductById = async (req, res) => {
-    try {
-        const product = await Product.findById(req.params.id);
-        if (product) {
-            res.json(product);
-        } else {
-            res.status(404).json({ message: 'Product not found' });
-        }
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+exports.getProductById = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    if (product) {
+      res.json(product);
+    } else {
+      res.status(404).json({ message: 'Product not found' });
     }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
-module.exports = {
-    getProducts,
-    getProductById,
+exports.getPromotionalProducts = async (req, res) => {
+  try {
+    const { limit = 10, offset = 0 } = req.query;
+    const products = await Product.find({ discount: { $gt: 0 } })
+      .skip(Number(offset))
+      .limit(Number(limit));
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getNewReleases = async (req, res) => {
+  try {
+    const { limit = 10, offset = 0 } = req.query;
+    const oneYearAgo = new Date();
+    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+    const now = new Date();
+    const products = await Product.find({
+      releaseDate: {
+        $gte: oneYearAgo,
+        $lte: now
+      }
+    })
+    .skip(Number(offset))
+    .limit(Number(limit));
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getBestsellers = async (req, res) => {
+  try {
+    const { limit = 10, offset = 0 } = req.query;
+    const products = await Product.find({})
+      .sort({ sold: -1 })
+      .skip(Number(offset))
+      .limit(Number(limit));
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getUpcomingReleases = async (req, res) => {
+  try {
+    const { limit = 10, offset = 0 } = req.query;
+    const now = new Date();
+    const products = await Product.find({
+      releaseDate: {
+        $gt: now
+      }
+    })
+    .skip(Number(offset))
+    .limit(Number(limit));
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
