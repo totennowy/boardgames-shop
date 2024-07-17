@@ -1,11 +1,17 @@
 import Layout from '@layout/Layout';
-import { CssBaseline } from '@mui/material';
+import Home from '@pages/home/Home';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import theme from './theme';
 
 function App() {
   return (
-    <CssBaseline>
-      <Layout>xyz</Layout>
-    </CssBaseline>
+    <ThemeProvider theme={theme}>
+      <CssBaseline>
+        <Layout>
+          <Home />
+        </Layout>
+      </CssBaseline>
+    </ThemeProvider>
   );
 }
 
