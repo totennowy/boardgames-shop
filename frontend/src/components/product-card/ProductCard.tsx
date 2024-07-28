@@ -5,11 +5,15 @@ import {
   CardMedia,
   Typography,
 } from '@mui/material';
-import carcassoneImg from '@assets/carcassone.jpg';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ButtonBrown from '@components/buttons/ButtonBrown';
+import { ModelProductCard } from './types/modelProductCard';
 
-const ProductCard = () => {
+const ProductCard: React.FC<ModelProductCard> = ({
+  name,
+  price,
+  iconImage,
+}) => {
   return (
     <Card
       elevation={0}
@@ -36,8 +40,8 @@ const ProductCard = () => {
             height: '268px',
             objectFit: 'contain',
           }}
-          image={carcassoneImg}
-          alt="something"
+          image={iconImage}
+          alt={name}
         />
 
         <CardContent
@@ -56,10 +60,10 @@ const ProductCard = () => {
           }}
         >
           <Typography fontSize={20} fontWeight={700}>
-            Carcassonne
+            {name}
           </Typography>
           <Typography fontSize={16} fontWeight={700}>
-            $ 35.55
+            {price && `$ ${price}`}
           </Typography>
         </CardContent>
       </CardActionArea>
