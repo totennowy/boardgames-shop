@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { getBestsellers } from '../services/bestsellersServices';
+import { useAPIContext } from '@contexts/useAPIContext';
 
-export const useBestsellers = () => {
-  const [bestsellersData, setBestsellersData] = useState([]);
+export const useBestsellers = (limit: number, offset: number) => {
+  const { setBestsellersData } = useAPIContext();
   const [loadingData, setLoadingData] = useState<boolean>(true);
-  const [fetchError, setFetchError] = useState(null);
+  const [fetchError, setFetchError] = useState<Error | null>(null);
 
   useEffect(() => {
     const fetchBestsellersData = async () => {
@@ -12,10 +13,17 @@ export const useBestsellers = () => {
         const data = await getBestsellers(limit, offset);
         setBestsellersData(data);
       } catch (error) {
-        setFetchError(error);
+        setFetchError(error as Error);
       } finally {
-        setLoadingData(false)
+        setLoadingData(false);
       }
     };
-  });
+
+    fetchBestsellersData();
+  }, [setBestsellersData, limit, offset]);
+
+  return {
+    loadingData,
+    fetchError,
+  };
 };
