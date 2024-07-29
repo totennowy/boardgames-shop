@@ -1,11 +1,11 @@
 import ProductCarousel from '@components/product-carousel/ProductCarousel';
 import { Box, Typography } from '@mui/material';
-import { useBestsellers } from '../special-offers/hooks/useBestsellers';
+import { useBestsellers } from './hooks/useBestsellers';
 import { useAPIContext } from '@contexts/useAPIContext';
 
 const Bestsellers = () => {
   const { bestsellersData } = useAPIContext();
-  const { loading, error } = useBestsellers(12, 0);
+  const { loadingData, fetchError } = useBestsellers(18, 0);
 
   return (
     <Box
@@ -29,7 +29,11 @@ const Bestsellers = () => {
           Bestsellers
         </Typography>
       </Box>
-      <ProductCarousel products={bestsellersData} />
+      <ProductCarousel
+        products={bestsellersData}
+        loading={loadingData}
+        error={fetchError}
+      />
     </Box>
   );
 };
