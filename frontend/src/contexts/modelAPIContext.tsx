@@ -14,6 +14,9 @@ export type ModelProduct = {
 export type ModelAPIContext = {
   bestsellersData: ModelProduct[];
   setBestsellersData: React.Dispatch<React.SetStateAction<ModelProduct[]>>;
+
+  promotionsData: ModelProduct[];
+  setPromotionsData: React.Dispatch<React.SetStateAction<ModelProduct[]>>;
 };
 
 export type ModelAPIProvider = {
