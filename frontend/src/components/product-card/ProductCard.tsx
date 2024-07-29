@@ -59,7 +59,7 @@ const ProductCard: React.FC<ModelProductCard> = ({
             color: '#e7e7e7',
           }}
         >
-          <Typography fontSize={20} fontWeight={700}>
+          <Typography fontSize={20} fontWeight={700} textAlign="center">
             {name}
           </Typography>
           <Typography fontSize={16} fontWeight={700}>
