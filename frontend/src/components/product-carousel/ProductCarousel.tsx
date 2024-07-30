@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIcon from '@mui/icons-material/ArrowBackIos';
 import ProductCard from '@components/product-card/ProductCard';
-import { Box, CircularProgress, IconButton } from '@mui/material';
+import { Box, CircularProgress, IconButton, Typography } from '@mui/material';
 import { ModelProductCarousel } from './types/modelProductCarousel';
 import useProductCarousel from './hooks/useProductCarousel';
 
@@ -30,7 +30,7 @@ const ProductCarousel: React.FC<ModelProductCarousel> = ({
     );
   }
 
-  if (error || !products || products.length === 0) {
+  if (error) {
     return (
       <Box
         sx={{
@@ -40,12 +40,12 @@ const ProductCarousel: React.FC<ModelProductCarousel> = ({
           height: '400px',
         }}
       >
-        Something went wrong. Please try again later.
+        <Typography>Something went wrong. Please try again later.</Typography>
       </Box>
     );
   }
 
-  if (products.length === 0) {
+  if (!Array.isArray(products) || products.length === 0) {
     return (
       <Box
         sx={{
@@ -55,7 +55,7 @@ const ProductCarousel: React.FC<ModelProductCarousel> = ({
           height: '400px',
         }}
       >
-        No products in this category. Sorry!
+        <Typography>No products in this category. Sorry!</Typography>
       </Box>
     );
   }
@@ -63,8 +63,8 @@ const ProductCarousel: React.FC<ModelProductCarousel> = ({
   return (
     <Box sx={{ position: 'relative', width: '100%' }}>
       <Slider ref={sliderRef} {...settings}>
-        {products.map((product) => (
-          <Box key={product.id} sx={{ padding: '0 8px' }}>
+        {products.map((product, index) => (
+          <Box key={product.id || index} sx={{ padding: '0 8px' }}>
             <ProductCard {...product} />
           </Box>
         ))}
