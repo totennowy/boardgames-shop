@@ -18,7 +18,7 @@ export const APIProvider: React.FC<ModelAPIProvider> = ({ children }) => {
         setBestsellersData,
 
         promotionsData,
-        setPromotionsData
+        setPromotionsData,
       }}
     >
       {children}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getBestsellers } from '../services/bestsellersServices';
+import { getBestsellers } from '@services/bestsellersServices';
 import { useAPIContext } from '@contexts/useAPIContext';
 
 export const useBestsellers = (limit: number, offset: number) => {

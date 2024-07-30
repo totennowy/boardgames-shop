@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useAPIContext } from '@contexts/useAPIContext';
 import { getPromotions } from '@services/promotionsService';
 
-const useSpecialOffers = (limit: number, offset: number) => {
+export const useSpecialOffers = (limit: number, offset: number) => {
   const { setPromotionsData } = useAPIContext();
   const [loadingData, setLoadingData] = useState<boolean>(true);
   const [fetchError, setFetchError] = useState<Error | null>(null);
@@ -27,5 +27,3 @@ const useSpecialOffers = (limit: number, offset: number) => {
     fetchError,
   };
 };
-
-export default useSpecialOffers;
