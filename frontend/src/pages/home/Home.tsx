@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
 import Bestsellers from './sections/bestsellers/Bestsellers';
+import SpecialOffers from './sections/special-offers/SpecialOffers';
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       }}
     >
       <Bestsellers />
+      <SpecialOffers />
     </Box>
   );
 };
