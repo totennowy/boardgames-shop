@@ -8,12 +8,12 @@ import { ModelProductCarousel } from './types/modelProductCarousel';
 import useProductCarousel from './hooks/useProductCarousel';
 
 const ProductCarousel: React.FC<ModelProductCarousel> = ({
-  products,
+  products = [],
   loading,
   error,
 }) => {
   const { currentSlide, sliderRef, handleNext, handlePrev, settings } =
-    useProductCarousel();
+    useProductCarousel(products);
 
   if (loading) {
     return (
@@ -84,17 +84,19 @@ const ProductCarousel: React.FC<ModelProductCarousel> = ({
         </IconButton>
       )}
 
-      <IconButton
-        sx={{
-          position: 'absolute',
-          top: '50%',
-          right: 0,
-          transform: 'translateY(-50%)',
-        }}
-        onClick={handleNext}
-      >
-        <ArrowForwardIcon />
-      </IconButton>
+      {products.length > settings.slidesToShow && (
+        <IconButton
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            right: 0,
+            transform: 'translateY(-50%)',
+          }}
+          onClick={handleNext}
+        >
+          <ArrowForwardIcon />
+        </IconButton>
+      )}
     </Box>
   );
 };

@@ -1,7 +1,8 @@
+import { ModelProduct } from '@contexts/modelAPIContext';
 import { useRef, useState } from 'react';
 import Slider from 'react-slick';
 
-const useProductCarousel = () => {
+const useProductCarousel = (products: ModelProduct[]) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const sliderRef = useRef<Slider | null>(null);
 
@@ -21,8 +22,8 @@ const useProductCarousel = () => {
     dots: false,
     infinite: false,
     speed: 1200,
-    slidesToShow: 6,
-    slidesToScroll: 6,
+    slidesToShow: Math.min(products.length, 6),
+    slidesToScroll: Math.min(products.length, 6),
     afterChange: (current: number) => {
       setCurrentSlide(current);
     },
