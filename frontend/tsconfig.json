@@ -22,7 +22,8 @@
       "@contexts/*": ["contexts/*"],
       "@layout/*": ["layout/*"],
       "@pages/*": ["pages/*"],
-      "@services/*": ["services/*"]
+      "@services/*": ["services/*"],
+      "@utils/*": ["utils/*"]
     }
   },
   "include": ["src"],
