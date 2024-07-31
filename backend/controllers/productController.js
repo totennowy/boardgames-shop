@@ -29,6 +29,7 @@ exports.getPromotionalProducts = async (req, res) => {
   try {
     const { limit = 10, offset = 0 } = req.query;
     const products = await Product.find({ discount: { $gt: 0 } })
+      .sort({ discount: -1})
       .skip(Number(offset))
       .limit(Number(limit));
     res.json(products);
@@ -60,7 +61,7 @@ exports.getNewReleases = async (req, res) => {
 exports.getBestsellers = async (req, res) => {
   try {
     const { limit = 10, offset = 0 } = req.query;
-    const products = await Product.find({})
+    const products = await Product.find({ sold: {$gt: 999}})
       .sort({ sold: -1 })
       .skip(Number(offset))
       .limit(Number(limit));
