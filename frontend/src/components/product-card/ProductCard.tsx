@@ -1,17 +1,12 @@
-import {
-  Box,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Typography,
-} from '@mui/material';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import ButtonBrown from '@components/buttons/ButtonBrown';
+import React from 'react';
+import { Box, Card, CardActionArea, CardMedia } from '@mui/material';
 import { ModelProductCard } from './types/modelProductCard';
 import { useHover } from '@utils/useHover';
-import Label from './components/Label';
+import CardLabels from './components/CardLabels';
 import useProductCard from './hooks/useProductCard';
+import ProductCardContent from './components/ProductCardContent';
+import ButtonBrown from '@components/buttons/ButtonBrown';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const ProductCard: React.FC<ModelProductCard> = ({
   name,
@@ -57,38 +52,15 @@ const ProductCard: React.FC<ModelProductCard> = ({
           image={iconImage}
           alt={name}
         />
-        <CardContent
-          sx={{
-            width: '100%',
-            position: 'absolute',
-            bottom: -40,
-            background: '#6143387e',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: 0,
-            margin: 0,
-            color: '#e7e7e7',
-            transition: 'transform 0.3s ease-in-out',
-            transform: isHovered ? 'translateY(-40px)' : 'translateY(0)',
-          }}
-        >
-          <Typography fontSize={20} fontWeight={700} textAlign="center">
-            {name}
-          </Typography>
-          <Typography fontSize={16} fontWeight={700}>
-            {price && `$ ${price}`}
-          </Typography>
-        </CardContent>
+        <ProductCardContent name={name} price={price} isHovered={isHovered} />
       </CardActionArea>
       <Box
         sx={{
           position: 'absolute',
-          bottom: 0,
+          bottom: '0',
           width: '100%',
           opacity: isHovered ? 1 : 0,
-          transform: isHovered ? 'translateY(0)' : 'translateY(100%)',
+          transform: isHovered ? 'translateY(0px)' : 'translateY(100%)',
           transition: 'opacity 0.3s ease-in-out, transform 0.3s ease-in-out',
         }}
       >
@@ -98,20 +70,7 @@ const ProductCard: React.FC<ModelProductCard> = ({
           text="ADD TO CART"
         />
       </Box>
-      <Box
-        sx={{
-          position: 'absolute',
-          top: '8px',
-          left: '0px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '10px',
-        }}
-      >
-        {labels.map((label, index) => (
-          <Label key={index} type={label.type} discount={label.discount} />
-        ))}
-      </Box>
+      <CardLabels labels={labels} />
     </Card>
   );
 };
