@@ -10,6 +10,9 @@ export const APIContext = createContext<ModelAPIContext | undefined>(undefined);
 export const APIProvider: React.FC<ModelAPIProvider> = ({ children }) => {
   const [bestsellersData, setBestsellersData] = useState<ModelProduct[]>([]);
   const [promotionsData, setPromotionsData] = useState<ModelProduct[]>([]);
+  const [upcomingReleasesData, setUpcomingReleasesData] = useState<
+    ModelProduct[]
+  >([]);
 
   return (
     <APIContext.Provider
@@ -19,6 +22,9 @@ export const APIProvider: React.FC<ModelAPIProvider> = ({ children }) => {
 
         promotionsData,
         setPromotionsData,
+
+        upcomingReleasesData,
+        setUpcomingReleasesData,
       }}
     >
       {children}
