@@ -22,8 +22,8 @@ const useProductCarousel = (products: ModelProduct[]) => {
     dots: false,
     infinite: false,
     speed: 1200,
-    slidesToShow: Math.min(products.length, 6),
-    slidesToScroll: Math.min(products.length, 6),
+    slidesToShow: Math.min(products.length, 5),
+    slidesToScroll: Math.min(products.length, 5),
     afterChange: (current: number) => {
       setCurrentSlide(current);
     },

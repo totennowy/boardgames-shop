@@ -84,7 +84,7 @@ const ProductCarousel: React.FC<ModelProductCarousel> = ({
         </IconButton>
       )}
 
-      {products.length > settings.slidesToShow && (
+      {currentSlide + settings.slidesToShow < products.length && (
         <IconButton
           sx={{
             position: 'absolute',
