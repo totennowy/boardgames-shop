@@ -80,6 +80,7 @@ exports.getUpcomingReleases = async (req, res) => {
         $gt: now
       }
     })
+    .sort({releaseDate: 1})
     .skip(Number(offset))
     .limit(Number(limit));
     res.json(products);
