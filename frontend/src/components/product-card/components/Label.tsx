@@ -3,12 +3,13 @@ import { Box } from '@mui/material';
 import { ModelLabel } from '../types/modelLabel';
 import useLabel from '../hooks/useLabel';
 
-const Label: React.FC<ModelLabel> = ({ type, discount }) => {
-  const { text, color } = useLabel(type, discount);
+const Label: React.FC<ModelLabel> = ({ type, discount, releaseDate }) => {
+  const { text, color } = useLabel(type, discount, releaseDate);
 
   return (
     <Box
       sx={{
+        width: 'fit-content',
         position: 'relative',
         backgroundColor: color,
         color: '#fff',

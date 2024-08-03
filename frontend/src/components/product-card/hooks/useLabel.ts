@@ -1,9 +1,11 @@
 import { LabelType } from '../types/modelLabel';
 
-const useLabel = (type: LabelType, discount?: number) => {
+const useLabel = (type: LabelType, discount?: number, releaseDate?: string) => {
+  const date = releaseDate?.slice(0, 10);
+
   const labelText: Record<LabelType, string> = {
     new: 'new',
-    upcoming: 'upcoming',
+    upcoming: releaseDate ? `upcoming ${date}` : '',
     bestseller: 'bestseller',
     discount: discount ? `${discount}%` : '',
   };
