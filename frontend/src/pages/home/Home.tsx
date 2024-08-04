@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
 import Bestsellers from './sections/bestsellers/Bestsellers';
 import SpecialOffers from './sections/special-offers/SpecialOffers';
+import UpcomingReleases from './sections/upcoming-releases/UpcomingReleases';
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
         gap: '40px',
       }}
     >
+      <UpcomingReleases />
       <Bestsellers />
       <SpecialOffers />
     </Box>
