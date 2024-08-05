@@ -19,6 +19,7 @@ const useProductCarousel = (products: ModelProduct[]) => {
   };
 
   const settings = {
+    rows: 1,
     dots: false,
     infinite: false,
     speed: 1200,

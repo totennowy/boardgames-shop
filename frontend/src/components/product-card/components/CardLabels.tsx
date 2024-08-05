@@ -16,7 +16,7 @@ const CardLabels: React.FC<ModelCardLabels> = ({ labels }) => {
       }}
     >
       {labels.map((label, index) => (
-        <Label key={index} type={label.type} discount={label.discount} />
+        <Label key={index} {...label} />
       ))}
     </Box>
   );
