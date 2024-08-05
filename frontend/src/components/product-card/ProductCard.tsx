@@ -14,6 +14,7 @@ const ProductCard: React.FC<ModelProductCard> = ({
   iconImage,
   discount,
   releaseDate,
+  stock,
   sold,
 }) => {
   const { isHovered, handleMouseEnter, handleMouseLeave } = useHover();
@@ -52,7 +53,7 @@ const ProductCard: React.FC<ModelProductCard> = ({
           image={iconImage}
           alt={name}
         />
-        <ProductCardContent name={name} price={price} isHovered={isHovered} />
+        <ProductCardContent name={name} price={price} discount={discount} isHovered={isHovered} />
       </CardActionArea>
       <Box
         sx={{
@@ -68,6 +69,8 @@ const ProductCard: React.FC<ModelProductCard> = ({
           icon={<ShoppingCartIcon />}
           onClick={() => console.log('button clicked')}
           text="ADD TO CART"
+          stock={stock}
+          releaseDate={releaseDate}
         />
       </Box>
       <CardLabels labels={labels} />
