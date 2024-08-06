@@ -7,26 +7,27 @@ const useProductCard = (
 ) => {
   const labels: { type: LabelType; discount?: number; releaseDate?: string }[] =
     [];
+
   const releaseDateObject = new Date(releaseDate);
   const today = new Date();
-  const sixMonthsAgo = new Date(today);
-  sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+  const oneYearAgo = new Date(today);
+  oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
 
   const conditions = [
     {
-      condition: releaseDateObject > today,
-      action: () => labels.push({ type: 'upcoming', releaseDate }),
-    },
-    {
       condition: sold > 999,
       action: () => labels.push({ type: 'bestseller' }),
+    },
+    {
+      condition: releaseDateObject > today,
+      action: () => labels.push({ type: 'upcoming', releaseDate }),
     },
     {
       condition: discount > 0,
       action: () => labels.push({ type: 'discount', discount }),
     },
     {
-      condition: releaseDateObject >= sixMonthsAgo,
+      condition: releaseDateObject >= oneYearAgo && releaseDateObject <= today,
       action: () => labels.push({ type: 'new' }),
     },
   ];
