@@ -19,7 +19,10 @@ export type ModelAPIContext = {
   setPromotionsData: React.Dispatch<React.SetStateAction<ModelProduct[]>>;
 
   upcomingReleasesData: ModelProduct[];
-  setUpcomingReleasesData: React.Dispatch<React.SetStateAction<ModelProduct[]>>;
+  setUpcomingReleasesData: React.Dispatch<React.SetStateAction<ModelProduct[]>>;  
+  
+  newReleasesData: ModelProduct[];
+  setNewReleasesData: React.Dispatch<React.SetStateAction<ModelProduct[]>>;
 };
 
 export type ModelAPIProvider = {
