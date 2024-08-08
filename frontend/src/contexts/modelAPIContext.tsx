@@ -23,6 +23,9 @@ export type ModelAPIContext = {
   
   newReleasesData: ModelProduct[];
   setNewReleasesData: React.Dispatch<React.SetStateAction<ModelProduct[]>>;
+
+  productByIdData: ModelProduct[];
+  setProductByIdData: React.Dispatch<React.SetStateAction<ModelProduct[]>>;
 };
 
 export type ModelAPIProvider = {
