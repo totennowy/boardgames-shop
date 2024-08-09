@@ -8,20 +8,13 @@ import ProductCardContent from './components/ProductCardContent';
 import ButtonBrown from '@components/buttons/ButtonBrown';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-const ProductCard: React.FC<ModelProductCard> = ({
-  name,
-  price,
-  iconImage,
-  discount,
-  releaseDate,
-  stock,
-  sold,
-}) => {
+const ProductCard: React.FC<ModelProductCard> = ({ product }) => {
   const { isHovered, handleMouseEnter, handleMouseLeave } = useHover();
-  const { labels } = useProductCard(releaseDate, discount, sold);
+  const { labels, selectAndNavigateToProduct } = useProductCard(product);
 
   return (
     <Card
+      onClick={selectAndNavigateToProduct}
       elevation={0}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -50,10 +43,15 @@ const ProductCard: React.FC<ModelProductCard> = ({
             height: '268px',
             objectFit: 'contain',
           }}
-          image={iconImage}
-          alt={name}
+          image={product.iconImage}
+          alt={product.name}
         />
-        <ProductCardContent name={name} price={price} discount={discount} isHovered={isHovered} />
+        <ProductCardContent
+          name={product.name}
+          price={product.price}
+          discount={product.discount}
+          isHovered={isHovered}
+        />
       </CardActionArea>
       <Box
         sx={{
@@ -69,8 +67,8 @@ const ProductCard: React.FC<ModelProductCard> = ({
           icon={<ShoppingCartIcon />}
           onClick={() => console.log('button clicked')}
           text="ADD TO CART"
-          stock={stock}
-          releaseDate={releaseDate}
+          stock={product.stock}
+          releaseDate={product.releaseDate}
         />
       </Box>
       <CardLabels labels={labels} />
