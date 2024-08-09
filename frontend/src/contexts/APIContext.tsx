@@ -15,6 +15,9 @@ export const APIProvider: React.FC<ModelAPIProvider> = ({ children }) => {
   >([]);
   const [newReleasesData, setNewReleasesData] = useState<ModelProduct[]>([]);
   const [productByIdData, setProductByIdData] = useState<ModelProduct[]>([]);
+  const [selectedProduct, setSelectedProduct] = useState<ModelProduct | null>(
+    null
+  );
 
   return (
     <APIContext.Provider
@@ -33,6 +36,9 @@ export const APIProvider: React.FC<ModelAPIProvider> = ({ children }) => {
 
         productByIdData,
         setProductByIdData,
+
+        selectedProduct,
+        setSelectedProduct,
       }}
     >
       {children}
