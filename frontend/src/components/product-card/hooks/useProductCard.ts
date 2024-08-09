@@ -1,30 +1,34 @@
+import { useAPIContext } from '@contexts/useAPIContext';
 import { LabelType } from '../types/modelLabel';
+import { ModelProductCard } from '../types/modelProductCard';
+import { useNavigate } from 'react-router-dom';
+import { generateSlug } from '@utils/generateSlug';
 
-const useProductCard = (
-  releaseDate: string,
-  discount: number,
-  sold: number
-) => {
+const useProductCard = (product: ModelProductCard['product']) => {
+  const { setSelectedProduct } = useAPIContext();
+  const navigate = useNavigate();
+
   const labels: { type: LabelType; discount?: number; releaseDate?: string }[] =
     [];
-
-  const releaseDateObject = new Date(releaseDate);
+  const releaseDateObject = new Date(product.releaseDate);
   const today = new Date();
   const oneYearAgo = new Date(today);
   oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
 
   const conditions = [
     {
-      condition: sold > 999,
+      condition: product.sold > 999,
       action: () => labels.push({ type: 'bestseller' }),
     },
     {
       condition: releaseDateObject > today,
-      action: () => labels.push({ type: 'upcoming', releaseDate }),
+      action: () =>
+        labels.push({ type: 'upcoming', releaseDate: product.releaseDate }),
     },
     {
-      condition: discount > 0,
-      action: () => labels.push({ type: 'discount', discount }),
+      condition: product.discount > 0,
+      action: () =>
+        labels.push({ type: 'discount', discount: product.discount }),
     },
     {
       condition: releaseDateObject >= oneYearAgo && releaseDateObject <= today,
@@ -38,7 +42,13 @@ const useProductCard = (
     }
   });
 
-  return { labels };
+  const selectAndNavigateToProduct = () => {
+    const slugifiedName = generateSlug(product.name);
+    setSelectedProduct(product);
+    navigate(`/product/${slugifiedName}`);
+  };
+
+  return { labels, selectAndNavigateToProduct };
 };
 
 export default useProductCard;
