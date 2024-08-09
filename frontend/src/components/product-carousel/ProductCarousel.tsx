@@ -65,7 +65,7 @@ const ProductCarousel: React.FC<ModelProductCarousel> = ({
       <Slider ref={sliderRef} {...settings}>
         {products.map((product, index) => (
           <Box key={product.id || index} sx={{ padding: '0 8px' }}>
-            <ProductCard {...product} />
+            <ProductCard product={product} />
           </Box>
         ))}
       </Slider>
