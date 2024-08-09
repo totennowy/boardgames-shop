@@ -1,9 +1,12 @@
 export type ModelProductCard = {
-  name: string;
-  price: number;
-  releaseDate: string;
-  iconImage: string;
-  stock: number;
-  discount: number;
-  sold: number;
+  product: {
+    id: string
+    name: string;
+    price: number;
+    releaseDate: string;
+    iconImage: string;
+    stock: number;
+    discount: number;
+    sold: number;
+  };
 };
