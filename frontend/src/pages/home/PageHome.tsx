@@ -4,7 +4,7 @@ import SpecialOffers from './sections/special-offers/SpecialOffers';
 import UpcomingReleases from './sections/upcoming-releases/UpcomingReleases';
 import NewReleases from './sections/new-releases/NewReleases';
 
-const Home = () => {
+const PageHome = () => {
   return (
     <Box
       sx={{
@@ -23,4 +23,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default PageHome;
