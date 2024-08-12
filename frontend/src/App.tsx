@@ -16,7 +16,10 @@ function App() {
             <Router>
               <Routes>
                 <Route path="/" element={<PageHome />} />
-                <Route path="/product/:productName" element={<PageProduct />} />
+                <Route
+                  path="/product/:productId/:productName"
+                  element={<PageProduct />}
+                />
                 <Route path="*" element={<PageNotFound />} />
               </Routes>
             </Router>
