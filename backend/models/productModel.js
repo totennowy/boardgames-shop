@@ -13,6 +13,10 @@ const productSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  teaser: {
+    type: String,
+    required: true,
+  },
   type: {
     type: String,
     required: true,
