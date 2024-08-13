@@ -9,8 +9,8 @@ const RatingHexagon: React.FC<ModelRatingHexagon> = ({ rating }) => {
   return (
     <Box
       sx={{
-        width: '50px',
-        height: '50px',
+        width: '56px',
+        height: '56px',
         backgroundColor: getRatingBackground(rating),
         clipPath:
           'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
@@ -22,7 +22,7 @@ const RatingHexagon: React.FC<ModelRatingHexagon> = ({ rating }) => {
       }}
     >
       <Typography variant="h6" component="span">
-        {rating}
+        {rating ? rating : '-'}
       </Typography>
     </Box>
   );
