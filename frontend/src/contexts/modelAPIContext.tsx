@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export type ModelProduct = {
+export type ModelProductShort = {
   id: string;
   name: string;
   price: number;
@@ -11,24 +11,40 @@ export type ModelProduct = {
   sold: number;
 };
 
+export type ModelProductFull = ModelProductShort & {
+  teaser: string;
+  description: string;
+  type: string;
+  players: string;
+  bestPlayers: number | null;
+  age: number;
+  difficulty: number | null;
+  rating: number | null;
+  galleryImages: string[];
+};
+
 export type ModelAPIContext = {
-  bestsellersData: ModelProduct[];
-  setBestsellersData: React.Dispatch<React.SetStateAction<ModelProduct[]>>;
+  bestsellersData: ModelProductShort[];
+  setBestsellersData: React.Dispatch<React.SetStateAction<ModelProductShort[]>>;
 
-  promotionsData: ModelProduct[];
-  setPromotionsData: React.Dispatch<React.SetStateAction<ModelProduct[]>>;
+  promotionsData: ModelProductShort[];
+  setPromotionsData: React.Dispatch<React.SetStateAction<ModelProductShort[]>>;
 
-  upcomingReleasesData: ModelProduct[];
-  setUpcomingReleasesData: React.Dispatch<React.SetStateAction<ModelProduct[]>>;
+  upcomingReleasesData: ModelProductShort[];
+  setUpcomingReleasesData: React.Dispatch<
+    React.SetStateAction<ModelProductShort[]>
+  >;
 
-  newReleasesData: ModelProduct[];
-  setNewReleasesData: React.Dispatch<React.SetStateAction<ModelProduct[]>>;
+  newReleasesData: ModelProductShort[];
+  setNewReleasesData: React.Dispatch<React.SetStateAction<ModelProductShort[]>>;
 
-  productByIdData: ModelProduct[];
-  setProductByIdData: React.Dispatch<React.SetStateAction<ModelProduct[]>>;
+  productByIdData: ModelProductFull | null;
+  setProductByIdData: React.Dispatch<
+    React.SetStateAction<ModelProductFull | null>
+  >;
 
-  selectedProduct: ModelProduct | null;
-  setSelectedProduct: (product: ModelProduct) => void;
+  selectedProduct: ModelProductFull | null;
+  setSelectedProduct: (product: ModelProductFull) => void;
 };
 
 export type ModelAPIProvider = {
