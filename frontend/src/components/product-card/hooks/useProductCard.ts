@@ -1,11 +1,9 @@
-import { useAPIContext } from '@contexts/useAPIContext';
 import { LabelType } from '../types/modelLabel';
 import { ModelProductCard } from '../types/modelProductCard';
 import { useNavigate } from 'react-router-dom';
 import { generateSlug } from '@utils/generateSlug';
 
 const useProductCard = (product: ModelProductCard['product']) => {
-  const { setSelectedProduct } = useAPIContext();
   const navigate = useNavigate();
 
   const labels: { type: LabelType; discount?: number; releaseDate?: string }[] =
@@ -44,8 +42,7 @@ const useProductCard = (product: ModelProductCard['product']) => {
 
   const selectAndNavigateToProduct = () => {
     const slugifiedName = generateSlug(product.name);
-    setSelectedProduct(product);
-    navigate(`/product/${slugifiedName}`);
+    navigate(`/product/${product._id}/${slugifiedName}`);
   };
 
   return { labels, selectAndNavigateToProduct };
