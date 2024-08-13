@@ -2,22 +2,28 @@ import React, { createContext, useState } from 'react';
 import {
   ModelAPIContext,
   ModelAPIProvider,
-  ModelProduct,
+  ModelProductShort,
+  ModelProductFull,
 } from './modelAPIContext';
 
 export const APIContext = createContext<ModelAPIContext | undefined>(undefined);
 
 export const APIProvider: React.FC<ModelAPIProvider> = ({ children }) => {
-  const [bestsellersData, setBestsellersData] = useState<ModelProduct[]>([]);
-  const [promotionsData, setPromotionsData] = useState<ModelProduct[]>([]);
-  const [upcomingReleasesData, setUpcomingReleasesData] = useState<
-    ModelProduct[]
-  >([]);
-  const [newReleasesData, setNewReleasesData] = useState<ModelProduct[]>([]);
-  const [productByIdData, setProductByIdData] = useState<ModelProduct[]>([]);
-  const [selectedProduct, setSelectedProduct] = useState<ModelProduct | null>(
-    null
+  const [bestsellersData, setBestsellersData] = useState<ModelProductShort[]>(
+    []
   );
+  const [promotionsData, setPromotionsData] = useState<ModelProductShort[]>([]);
+  const [upcomingReleasesData, setUpcomingReleasesData] = useState<
+    ModelProductShort[]
+  >([]);
+  const [newReleasesData, setNewReleasesData] = useState<ModelProductShort[]>(
+    []
+  );
+
+  const [productByIdData, setProductByIdData] =
+    useState<ModelProductFull | null>(null);
+  const [selectedProduct, setSelectedProduct] =
+    useState<ModelProductFull | null>(null);
 
   return (
     <APIContext.Provider
