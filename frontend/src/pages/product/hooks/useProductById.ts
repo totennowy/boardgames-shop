@@ -1,16 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAPIContext } from '@contexts/useAPIContext';
 import { getProductById } from '@services/getProductByIdServices';
+import { useParams } from 'react-router-dom';
 
-const useProductById = (id: string) => {
-  const { setProductByIdData } = useAPIContext();
+const useProductById = () => {
+  const { productByIdData, setProductByIdData } = useAPIContext();
   const [loadingData, setLoadingData] = useState<boolean>(true);
   const [fetchError, setFetchError] = useState<Error | null>(null);
+  const { productId } = useParams<{ productId: string }>();
 
   useEffect(() => {
-    const fetchProductByIdData = async (id: string) => {
+    const fetchProductData = async () => {
       try {
-        const data = await getProductById(id);
+        const data = await getProductById(productId!);
         setProductByIdData(data);
       } catch (error) {
         setFetchError(error as Error);
@@ -18,12 +20,14 @@ const useProductById = (id: string) => {
         setLoadingData(false);
       }
     };
-    fetchProductByIdData(id);
-  }, [setProductByIdData, id]);
+
+    fetchProductData();
+  }, [productId, setProductByIdData]);
 
   return {
     loadingData,
     fetchError,
+    productByIdData,
   };
 };
 
