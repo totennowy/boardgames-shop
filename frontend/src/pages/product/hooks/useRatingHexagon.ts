@@ -1,5 +1,9 @@
 const useRatingHexagon = () => {
-  const getRatingBackground = (rating: number) => {
+  const getRatingBackground = (rating?: number) => {
+    if (!rating) {
+      return '#666e75';
+    }
+
     switch (true) {
       case rating < 2:
         return '#660000';
