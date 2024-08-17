@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
-export const useMainImage = (images: string[]) => {
-  const [selectedImage, setSelectedImage] = useState<string>(images[0]);
+export const useMainImage = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const handleImageClick = () => {
@@ -9,10 +8,8 @@ export const useMainImage = (images: string[]) => {
   };
 
   return {
-    selectedImage,
     isModalOpen,
     handleImageClick,
     setIsModalOpen,
-    setSelectedImage,
   };
 };
