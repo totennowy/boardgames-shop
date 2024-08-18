@@ -1,26 +1,84 @@
 import React from 'react';
-import { Box } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useMainImage } from '../hooks/useMainImage';
-import { ModelMainImage } from '../types/modelModelMainImage';
+import { ModelMainImage } from '../types/modelMainImage';
 import ImageModal from './ImageModal';
 
-const MainImage: React.FC<ModelMainImage> = ({ images }) => {
+const MainImage: React.FC<ModelMainImage> = ({
+  images,
+  selectedImage,
+  setSelectedImage,
+}) => {
   const {
-    selectedImage,
     isModalOpen,
     handleImageClick,
     setIsModalOpen,
-    setSelectedImage,
-  } = useMainImage(images);
+    handleNext,
+    handlePrev,
+    isHovered,
+    setIsHovered,
+  } = useMainImage(images, selectedImage, setSelectedImage);
 
   return (
-    <Box>
+    <Box
+      sx={{ position: 'relative', width: '600px', height: '400px' }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <img
         src={selectedImage}
         alt="Main product"
-        style={{ width: '100%', cursor: 'pointer' }}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100%',
+          width: '100%',
+          cursor: 'pointer',
+          objectFit: 'contain',
+        }}
         onClick={handleImageClick}
       />
+      {isHovered && (
+        <>
+          <IconButton
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '0',
+              transform: 'translateY(-50%)',
+              zIndex: 1,
+              backgroundColor: 'rgba(255, 255, 255, 0.8)',
+              borderRadius: '50%',
+              '&:hover': {
+                backgroundColor: 'rgba(255, 255, 255, 1)',
+              },
+            }}
+            onClick={handlePrev}
+          >
+            <ArrowBackIosIcon sx={{ color: '#333' }} />
+          </IconButton>
+          <IconButton
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              right: '0',
+              transform: 'translateY(-50%)',
+              zIndex: 1,
+              backgroundColor: 'rgba(255, 255, 255, 0.8)',
+              borderRadius: '50%',
+              '&:hover': {
+                backgroundColor: 'rgba(255, 255, 255, 1)',
+              },
+            }}
+            onClick={handleNext}
+          >
+            <ArrowForwardIosIcon sx={{ color: '#333' }} />
+          </IconButton>
+        </>
+      )}
       <ImageModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
