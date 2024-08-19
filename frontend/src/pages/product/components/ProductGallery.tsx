@@ -5,6 +5,18 @@ import ThumbnailsCarousel from './ThumbnailsCarousel';
 
 const ProductGallery: React.FC<{ images: string[] }> = ({ images }) => {
   const [selectedImage, setSelectedImage] = useState<string>(images[0]);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const updateCarouselIndex = (index: number) => {
+    setActiveIndex(index);
+    setSelectedImage(images[index]);
+  };
+
+  const handleImageSelection = (image: string) => {
+    const index = images.indexOf(image);
+    setActiveIndex(index);
+    setSelectedImage(image);
+  };
 
   return (
     <Box sx={{ width: '100%', maxWidth: '600px' }}>
@@ -12,8 +24,14 @@ const ProductGallery: React.FC<{ images: string[] }> = ({ images }) => {
         images={images}
         selectedImage={selectedImage}
         setSelectedImage={setSelectedImage}
+        updateCarouselIndex={updateCarouselIndex}
       />
-      <ThumbnailsCarousel images={images} setSelectedImage={setSelectedImage} />
+      <ThumbnailsCarousel
+        images={images}
+        setSelectedImage={handleImageSelection}
+        selectedImage={selectedImage}
+        activeIndex={activeIndex}
+      />
     </Box>
   );
 };
