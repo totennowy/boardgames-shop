@@ -10,6 +10,7 @@ const MainImage: React.FC<ModelMainImage> = ({
   images,
   selectedImage,
   setSelectedImage,
+  updateCarouselIndex,
 }) => {
   const {
     isModalOpen,
@@ -19,7 +20,7 @@ const MainImage: React.FC<ModelMainImage> = ({
     handlePrev,
     isHovered,
     setIsHovered,
-  } = useMainImage(images, selectedImage, setSelectedImage);
+  } = useMainImage(images, selectedImage, setSelectedImage, updateCarouselIndex);
 
   return (
     <Box
@@ -55,10 +56,18 @@ const MainImage: React.FC<ModelMainImage> = ({
               '&:hover': {
                 backgroundColor: 'rgba(255, 255, 255, 1)',
               },
+              width: '40px',
+              height: '40px',
             }}
             onClick={handlePrev}
           >
-            <ArrowBackIosIcon sx={{ color: '#333' }} />
+            <ArrowBackIosIcon
+              sx={{
+                color: '#333',
+                fontSize: '20px',
+                marginLeft: '5px',
+              }}
+            />
           </IconButton>
           <IconButton
             sx={{
@@ -72,10 +81,18 @@ const MainImage: React.FC<ModelMainImage> = ({
               '&:hover': {
                 backgroundColor: 'rgba(255, 255, 255, 1)',
               },
+              width: '40px',
+              height: '40px',
             }}
             onClick={handleNext}
           >
-            <ArrowForwardIosIcon sx={{ color: '#333' }} />
+            <ArrowForwardIosIcon
+              sx={{
+                color: '#333',
+                fontSize: '20px',
+                marginRight: '2px',
+              }}
+            />
           </IconButton>
         </>
       )}
