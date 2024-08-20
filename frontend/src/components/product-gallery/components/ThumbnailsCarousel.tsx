@@ -33,8 +33,6 @@ const ThumbnailsCarousel: React.FC<ModelThumbnailsCarousel> = ({
           <Box
             key={index}
             sx={{
-              p: 1,
-              mx: 0.5,
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
@@ -70,18 +68,19 @@ const ThumbnailsCarousel: React.FC<ModelThumbnailsCarousel> = ({
               left: '0',
               transform: 'translateY(-50%)',
               zIndex: 1,
-              backgroundColor: 'rgba(255, 255, 255, 0.8)',
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
+              '&:hover': {
+                backgroundColor: 'rgba(0, 0, 0, 0.7)',
+              },
               borderRadius: '50%',
               width: '40px',
               height: '40px',
-              '&:hover': {
-                backgroundColor: 'rgba(255, 255, 255, 1)',
-              },
             }}
             onClick={handlePrev}
           >
             <ArrowBackIosIcon
-              sx={{ color: '#333', fontSize: '20px', marginLeft: '5px' }}
+              sx={{ color: 'white', fontSize: '20px', marginLeft: '5px' }}
             />
           </IconButton>
           <IconButton
@@ -91,18 +90,19 @@ const ThumbnailsCarousel: React.FC<ModelThumbnailsCarousel> = ({
               right: '0',
               transform: 'translateY(-50%)',
               zIndex: 1,
-              backgroundColor: 'rgba(255, 255, 255, 0.8)',
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
+              '&:hover': {
+                backgroundColor: 'rgba(0, 0, 0, 0.7)',
+              },
               borderRadius: '50%',
               width: '40px',
               height: '40px',
-              '&:hover': {
-                backgroundColor: 'rgba(255, 255, 255, 1)',
-              },
             }}
             onClick={handleNext}
           >
             <ArrowForwardIosIcon
-              sx={{ color: '#333', fontSize: '20px', marginRight: '5px' }}
+              sx={{ color: 'white', fontSize: '20px', marginRight: '0px' }}
             />
           </IconButton>
         </>
