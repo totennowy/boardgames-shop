@@ -7,7 +7,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import Face4Icon from '@mui/icons-material/Face4';
 import DifficultyBox from './components/DifficultyBox';
 import ProductAttributeBox from './components/ProductAttributeBox';
-import ProductGallery from './components/ProductGallery';
+import ProductGallery from '../../components/product-gallery/ProductGallery';
 
 const PageProduct: React.FC = () => {
   const { productByIdData, loadingData, fetchError } = useProductById();
@@ -51,7 +51,6 @@ const PageProduct: React.FC = () => {
             display: 'flex',
             flexDirection: 'column',
             gap: '20px',
-            border: '1px solid red',
           }}
         >
           <ProductGallery images={productByIdData.galleryImages} />
@@ -63,7 +62,6 @@ const PageProduct: React.FC = () => {
             display: 'flex',
             flexDirection: 'column',
             gap: '20px',
-            border: '1px solid green',
           }}
         >
           <Box
