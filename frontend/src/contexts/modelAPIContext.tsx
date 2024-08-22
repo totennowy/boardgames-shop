@@ -14,7 +14,11 @@ export type ModelProductShort = {
 export type ModelProductFull = ModelProductShort & {
   teaser: string;
   description: string;
-  type: string;
+  author: string[];
+  illustrations: string[];
+  themes: string[];
+  mechanics: string[];
+  era: string[];
   players: string;
   bestPlayers: number | null;
   age: number;
