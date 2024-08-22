@@ -8,6 +8,7 @@ import Face4Icon from '@mui/icons-material/Face4';
 import DifficultyBox from './components/DifficultyBox';
 import ProductAttributeBox from './components/ProductAttributeBox';
 import ProductGallery from '../../components/product-gallery/ProductGallery';
+import ProductDetails from './components/product-details/ProductDetails';
 
 const PageProduct: React.FC = () => {
   const { productByIdData, loadingData, fetchError } = useProductById();
@@ -120,22 +121,7 @@ const PageProduct: React.FC = () => {
             <DifficultyBox difficulty={productByIdData.difficulty} />
           </Box>
 
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <Box sx={{ display: 'flex', gap: '6px' }}>
-              <Typography>Author:</Typography>
-              <Typography fontWeight={300}>
-                {productByIdData.author.join(', ')}
-              </Typography>
-            </Box>
-            <Box sx={{ display: 'flex', gap: '6px' }}>
-              <Typography>Illustration:</Typography>
-              <Typography fontWeight={300}>
-                {productByIdData.illustrations.join(', ')}
-              </Typography>
-            </Box>
-          </Box>
-
-          <Typography>{productByIdData.description}</Typography>
+          <ProductDetails productByIdData={productByIdData} />
         </Box>
       </Box>
     </Box>
