@@ -16,7 +16,6 @@ const DifficultyBox: React.FC<ModelDifficultyBox> = ({ difficulty }) => {
         justifyContent: 'center',
         gap: '6px',
         padding: '6px',
-        borderRight: '1px solid #d3d3d3',
       }}
     >
       <SpeedIcon sx={{ width: 'auto', height: '60px' }} />
