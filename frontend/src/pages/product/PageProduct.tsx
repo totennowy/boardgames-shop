@@ -120,6 +120,21 @@ const PageProduct: React.FC = () => {
             <DifficultyBox difficulty={productByIdData.difficulty} />
           </Box>
 
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <Box sx={{ display: 'flex', gap: '6px' }}>
+              <Typography>Author:</Typography>
+              <Typography fontWeight={300}>
+                {productByIdData.author.join(', ')}
+              </Typography>
+            </Box>
+            <Box sx={{ display: 'flex', gap: '6px' }}>
+              <Typography>Illustration:</Typography>
+              <Typography fontWeight={300}>
+                {productByIdData.illustrations.join(', ')}
+              </Typography>
+            </Box>
+          </Box>
+
           <Typography>{productByIdData.description}</Typography>
         </Box>
       </Box>
