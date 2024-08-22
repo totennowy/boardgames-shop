@@ -9,16 +9,32 @@ const productSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
-  description: {
-    type: String,
-    required: true,
-  },
   teaser: {
     type: String,
     required: true,
   },
-  type: {
+  description: {
     type: String,
+    required: true,
+  },
+  author: {
+    type: [String],
+    required: true,
+  },
+  illustrations: {
+    type: [String],
+    required: true,
+  },
+  themes: {
+    type: [String],
+    required: true,
+  },
+  mechanics: {
+    type: [String],
+    required: true,
+  },
+  era: {
+    type: [String],
     required: true,
   },
   players: {
