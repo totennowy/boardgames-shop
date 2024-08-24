@@ -13,19 +13,29 @@ const ProductGallery: React.FC<{ images: string[] }> = ({ images }) => {
   } = useProductGallery(images);
 
   return (
-    <Box sx={{ width: '100%', maxWidth: '600px' }}>
-      <MainImage
-        images={images}
-        selectedImage={selectedImage}
-        setSelectedImage={handleImageSelection}
-        updateCarouselIndex={updateCarouselIndex}
-      />
-      <ThumbnailsCarousel
-        images={images}
-        setSelectedImage={handleImageSelection}
-        selectedImage={selectedImage}
-        activeIndex={activeIndex}
-      />
+    <Box
+      sx={{
+        width: '100%',
+        flex: '1',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px',
+      }}
+    >
+      <Box sx={{ width: '100%', maxWidth: '600px' }}>
+        <MainImage
+          images={images}
+          selectedImage={selectedImage}
+          setSelectedImage={handleImageSelection}
+          updateCarouselIndex={updateCarouselIndex}
+        />
+        <ThumbnailsCarousel
+          images={images}
+          setSelectedImage={handleImageSelection}
+          selectedImage={selectedImage}
+          activeIndex={activeIndex}
+        />
+      </Box>
     </Box>
   );
 };
