@@ -64,7 +64,7 @@ const ProductOverview: React.FC<ModelProductOverview> = ({
         <ProductAttributeBox
           icon={<Face4Icon sx={{ width: 'auto', height: '60px' }} />}
           upperLabel={`${productByIdData.age} +`}
-          lowerLabel="Playing Time"
+          lowerLabel="Suggested Age"
         />
         <DifficultyBox difficulty={productByIdData.difficulty} />
       </Box>
