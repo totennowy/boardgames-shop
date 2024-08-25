@@ -12,7 +12,7 @@ const ProductDetails: React.FC<ModelProductDetails> = ({ productByIdData }) => {
       }}
     >
       <Box sx={{ display: 'flex', gap: '6px' }}>
-        <Typography>Author:</Typography>
+        <Typography fontWeight={700}>Author:</Typography>
         <Typography fontWeight={300}>
           {productByIdData.author.join(', ')}
         </Typography>
@@ -25,12 +25,12 @@ const ProductDetails: React.FC<ModelProductDetails> = ({ productByIdData }) => {
           paddingBottom: '16px',
         }}
       >
-        <Typography>Illustration:</Typography>
+        <Typography fontWeight={600}>Illustration:</Typography>
         <Typography fontWeight={300}>
           {productByIdData.illustrations.join(', ')}
         </Typography>
       </Box>
-      <Typography>{productByIdData.description}</Typography>
+      <Typography fontWeight={300}>{productByIdData.description}</Typography>
     </Box>
   );
 };
