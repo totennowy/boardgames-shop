@@ -11,7 +11,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Oswald, sans-serif',
+    fontFamily: 'Lora, Tahoma, sans-serif',
   },
 });
 
