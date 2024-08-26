@@ -21,10 +21,10 @@ const ProductAttributeBox: React.FC<ModelProductAttributeBox> = ({
     >
       {icon}
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Typography textTransform={'capitalize'} fontSize={16} fontWeight={500}>
+        <Typography textTransform={'capitalize'} fontSize={16} fontWeight={700}>
           {upperLabel}
         </Typography>
-        <Typography fontSize={14} fontWeight={400}>
+        <Typography fontSize={14} fontWeight={300}>
           {lowerLabel}
         </Typography>
       </Box>
