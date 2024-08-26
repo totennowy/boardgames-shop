@@ -19,7 +19,7 @@ const useLabel = (type: LabelType, discount?: number, releaseDate?: string) => {
 
   const text =
     type === 'discount' && discount !== undefined
-      ? `${discount}%`
+      ? `-${discount}%`
       : labelText[type];
   const color = labelColors[type];
 
