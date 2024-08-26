@@ -23,12 +23,12 @@ const DifficultyBox: React.FC<ModelDifficultyBox> = ({ difficulty }) => {
         <Typography
           textTransform={'capitalize'}
           fontSize={16}
-          fontWeight={500}
+          fontWeight={700}
           color={getRatingColor(difficulty)}
         >
           {difficulty ? difficulty + ' / 5' : '? / 5'}
         </Typography>
-        <Typography fontSize={14} fontWeight={400}>
+        <Typography fontSize={14} fontWeight={300}>
           Difficulty
         </Typography>
       </Box>
