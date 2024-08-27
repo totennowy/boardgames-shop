@@ -37,10 +37,20 @@ const PageProduct: React.FC = () => {
           display: 'flex',
           alignItems: 'flex-start',
           justifyContent: 'space-between',
-          gap: '40px;',
+          gap: '60px;',
         }}
       >
-        <ProductGallery images={productByIdData.galleryImages} />
+        <Box
+          sx={{
+            flex: '1',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '20px',
+            paddingTop: '60px',
+          }}
+        >
+          <ProductGallery images={productByIdData.galleryImages} />
+        </Box>
         <Box
           sx={{
             flex: '2',
