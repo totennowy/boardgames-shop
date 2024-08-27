@@ -8,6 +8,7 @@ import { ModelProductOverview } from './types/modelProductOverview';
 import ProductAttributeBox from './components/ProductAttributeBox';
 import DifficultyBox from './components/DifficultyBox';
 import RatingHexagon from './components/RatingHexagon';
+import TagsBox from './components/TagsBox/TagsBox';
 
 const ProductOverview: React.FC<ModelProductOverview> = ({
   productByIdData,
@@ -68,8 +69,11 @@ const ProductOverview: React.FC<ModelProductOverview> = ({
         />
         <DifficultyBox difficulty={productByIdData.difficulty} />
       </Box>
+
+      <TagsBox product={productByIdData} />
     </Box>
   );
 };
 
 export default ProductOverview;
+
