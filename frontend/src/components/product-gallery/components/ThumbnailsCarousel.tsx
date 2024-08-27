@@ -24,7 +24,7 @@ const ThumbnailsCarousel: React.FC<ModelThumbnailsCarousel> = ({
 
   return (
     <Box
-      sx={{ mt: 2, position: 'relative' }}
+      sx={{ mt: 2, position: 'relative', marginTop: '40px' }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
